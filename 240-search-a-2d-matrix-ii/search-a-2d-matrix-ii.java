@@ -3,15 +3,14 @@ class Solution {
         if(matrix == null || matrix.length < 1 || matrix[0].length < 1){
             return false;
         }
-        int row = 0;
-        int col = matrix[0].length - 1;
-        while(row <= matrix.length -1 && col >= 0){
+        int row = matrix.length - 1, col = 0;
+        while(row >= 0 && col < matrix[0].length){
             if(matrix[row][col] == target){
                 return true;
             }else if(target < matrix[row][col]){
-                col--;
+                row--;
             }else{
-                row++;
+                col++;
             }
         }
         return false;
