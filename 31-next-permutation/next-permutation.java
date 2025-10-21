@@ -9,7 +9,7 @@ class Solution {
             }
         }
         if(pivot == -1){
-            reverse(nums,0,n-1);
+            reverse(nums, 0, n-1);
             return;
         }
         for(int i=n-1; i>pivot; i--){
@@ -24,10 +24,10 @@ class Solution {
         int temp = nums[i];
         nums[i] = nums[j];
         nums[j] = temp;
-    }
-    private void reverse(int nums[], int i, int j){
+     }
+     private void reverse(int nums[], int i, int j){
         while(i < j){
             swap(nums,i++,j--);
         }
-    }
+     }
 }
