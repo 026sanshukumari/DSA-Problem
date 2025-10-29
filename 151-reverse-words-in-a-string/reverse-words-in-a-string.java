@@ -7,8 +7,8 @@ class Solution {
             while(i >= 0 && s.charAt(i) == ' ') i--;
             int j = i;
             while(i >= 0 && s.charAt(i) != ' ') i--;
-            if (sb.length() > 0) sb.append(' ');
-            sb.append(s.substring(i + 1, j + 1));
+            if(sb.length() > 0) sb.append(' ');
+            sb.append(s.substring(i+1, j+1));
         }
         return sb.toString();
     }
