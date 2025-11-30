@@ -5,9 +5,10 @@ class Solution {
             m[a[1]] += a[0];
             m[a[2]] -= a[0];
         }
-        for(int i=0; capacity >= 0 && i < 1001; i++){
+        for(int i=0; capacity >=0 && i < 1001; i++){
             capacity -= m[i];
+            if(capacity < 0) return false;
         }
-        return capacity >= 0;
+        return true;
     }
 }
