@@ -2,7 +2,7 @@ class Solution {
     public int balancedString(String s) {
         int n = s.length();
         int required = n / 4;
-        
+
         int[] count = new int[128];
         for (char c : s.toCharArray()) {
             count[c]++;
