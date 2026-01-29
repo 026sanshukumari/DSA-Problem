@@ -1,7 +1,7 @@
 class Solution {
     public int maxBottlesDrunk(int numBottles, int numExchange) {
         int ans = numBottles;
-        int emptyBottles = numBottles;
+        int emptyBottles = numBottles; 
         while(emptyBottles >= numExchange){
             ans = ans + 1;
             emptyBottles -= numExchange;
