@@ -14,19 +14,17 @@ class Solution {
         dummy.next = head;
         int len = 0;
         ListNode l = head;
-
-        while(l != null){
-            len = len + 1;
+        int jumps = 0;
+        while(jumps < n && l != null){
             l = l.next;
+            jumps = jumps + 1;
         }
-        int d = len - n + 1;
-        ListNode prev = dummy, curr = head;
+        ListNode prev = dummy, curr = l;
         int i = 0;
 
-        while(i < (d - 1)){
+        while(curr != null){
             curr = curr.next;
             prev = prev.next;
-            i = i + 1;
         }
         prev.next = prev.next.next;
         return dummy.next;
