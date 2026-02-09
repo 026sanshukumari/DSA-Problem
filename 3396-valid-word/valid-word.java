@@ -5,18 +5,19 @@ class Solution {
             return false;
         }
         int vowel = 0;
-        int consonante = 0;
+        int cons = 0;
         for(char c : word.toCharArray()){
             if(Character.isLetter(c)){
-                if("aeiouAEIOU".indexOf(c) != -1){
-                     vowel++;
-                       }else{
-                            consonante++;
-                       }
-            }else if(!Character.isDigit(c)){
-                return false;
+            if("aeiouAEIOU".indexOf(c) != -1){
+                vowel++;
+            }else{
+                cons++;
             }
         }
-        return vowel >= 1 && consonante >= 1;
+        else if(!Character.isDigit(c)){
+           return false;
+        }
+        }
+        return vowel >= 1 && cons >= 1;
     }
 }
