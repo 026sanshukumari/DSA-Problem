@@ -7,12 +7,12 @@ class Solution {
         }
         int gcd = a;
         int cnt = 0;
-        for(int i=1; i*i <= gcd; i++){
-            if(gcd % i == 0){
-                if(i*i == gcd)
+        for(int i=1; i*i<=gcd; i++){
+            if(gcd % i == 0) {
+                if(i * i == gcd)
                 cnt++;
-            else
-            cnt += 2;
+                else
+                cnt += 2;
             }
         }
         return cnt;
