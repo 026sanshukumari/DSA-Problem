@@ -10,7 +10,7 @@ class Node{
 class Trie {
     Node root;
     public Trie() {
-       root = new Node();
+        root = new Node();
     }
     
     public void insert(String word) {
@@ -30,7 +30,7 @@ class Trie {
         for(int i=0; i<word.length(); i++){
             int idx = word.charAt(i) - 'a';
             if(curr.children[idx] == null){
-                return false;
+               return false;
             }
             curr = curr.children[idx];
         }
