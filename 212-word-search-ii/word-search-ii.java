@@ -2,19 +2,19 @@ class Solution {
     class TrieNode{
         TrieNode children[] = new TrieNode[26];
         String word;
-}
-TrieNode root = new TrieNode();
-public void insert(String word){
-    TrieNode curr = root;
-    for(int i=0; i<word.length(); i++){
-        int idx = word.charAt(i) - 'a';
-        if(curr.children[idx] == null){
-            curr.children[idx] = new TrieNode();
-        }
-        curr = curr.children[idx];
     }
-    curr.word = word;
-}
+    TrieNode root = new TrieNode();
+    public void insert(String word){
+        TrieNode curr = root;
+        for(int i=0; i<word.length(); i++){
+            int idx = word.charAt(i) - 'a';
+            if(curr.children[idx] == null){
+                curr.children[idx] = new TrieNode();
+            }
+            curr = curr.children[idx];
+        }
+        curr.word = word;
+    }
     public List<String> findWords(char[][] board, String[] words) {
         for(String word : words){
             insert(word);
