@@ -25,7 +25,6 @@ class Solution {
             Pair node = pq.poll();
             int n = res.length();
 
-            // check last 2 chars
             if (n >= 2 && res.charAt(n - 1) == node.ch && res.charAt(n - 2) == node.ch) {
                 if (pq.isEmpty()) break;
 
@@ -37,7 +36,7 @@ class Solution {
                     pq.offer(sec);
                 }
 
-                pq.offer(node); // push back first choice
+                pq.offer(node); 
             } else {
                 res.append(node.ch);
                 node.count--;
