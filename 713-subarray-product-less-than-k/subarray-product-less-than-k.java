@@ -7,12 +7,13 @@ class Solution {
         int prod = 1;
         while(r < nums.length){
             prod = prod * nums[r];
+
             while(prod >= k){
                 prod = prod / nums[l];
                 l++;
             }
-                count += (r - l + 1);
-                r++;
+            count += (r - l + 1);
+            r++;
         }
         return count;
     }
