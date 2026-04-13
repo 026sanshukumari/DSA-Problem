@@ -7,23 +7,24 @@ class Solution {
                 max = nums[i];
             }
         }
-        int l=0;
+        int l = 0;
         int r = 0;
-        long totalCount = 0;
-        int CountMax = 0;
+        long totalCnt = 0;
+        int cntMax = 0;
         while(r < n){
             if(nums[r] == max){
-                CountMax++;
+                cntMax++;
             }
-            while(CountMax >= k){
-                totalCount += (n - r);
+            while(cntMax >= k){
+                totalCnt += (n - r);
                 if(nums[l] == max){
-                    CountMax--;
+                    cntMax--;
                 }
                 l++;
             }
             r++;
         }
-        return totalCount;
+        return totalCnt;
+
     }
 }
