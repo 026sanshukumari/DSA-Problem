@@ -6,7 +6,7 @@ class Solution {
         int max = 0;
         for(int r=0; r<nums.length; r++){
             sum += nums[r];
-            while((long) (r - l + 1) * nums[r] - sum > k){
+            while((long)(r - l + 1) * nums[r] - sum > k){
                 sum -= nums[l];
                 l++;
             }
