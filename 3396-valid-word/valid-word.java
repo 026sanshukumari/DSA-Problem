@@ -1,23 +1,23 @@
 class Solution {
     public boolean isValid(String word) {
-        int n = word.length();
-        if(n < 3){
-            return false;
-        }
-        int vowel = 0;
-        int cons = 0;
-        for(char c : word.toCharArray()){
-            if(Character.isLetter(c)){
-            if("aeiouAEIOU".indexOf(c) != -1){
-                vowel++;
-            }else{
-                cons++;
+        if(word.length() < 3) return false;
+        boolean hasvow = false;
+        boolean hascon = false;
+        for(int i=0; i<word.length(); i++){
+            char ch = word.charAt(i);
+            if(ch >= '0' && ch <= '9') continue;
+            else if((ch >= 'A' && ch <= 'Z') || (ch >= 'a' && ch <= 'z')){
+                char c = Character.toLowerCase(ch);
+                if(c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u'){
+                    hasvow = true;
+                }else{
+                    hascon = true;
+                }
+            }
+            else{
+                return false;
             }
         }
-        else if(!Character.isDigit(c)){
-           return false;
-        }
-        }
-        return vowel >= 1 && cons >= 1;
+        return hasvow && hascon;
     }
 }
