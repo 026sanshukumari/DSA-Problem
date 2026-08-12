@@ -1,26 +1,19 @@
 class Solution {
     public List<Integer> findClosestElements(int[] arr, int k, int x) {
-        PriorityQueue<Integer> pq = new PriorityQueue<>((a,b) -> {
-            int da = Math.abs(a - x);
-            int db = Math.abs(b - x);
-
-            if(da != db){
-                return db - da;
+        int start = 0;
+        int end = arr.length - k;
+        while(start < end){
+            int mid = start + (end - start)/2;
+            if(x - arr[mid] > arr[mid + k] - x){
+                start = mid + 1;
             }else{
-                return b - a;
-            }
-        });
-        for(int num : arr){
-            pq.add(num);
-            if(pq.size() > k){
-                pq.poll();
+                end = mid;
             }
         }
         List<Integer> ans = new ArrayList<>();
-        while(!pq.isEmpty()){
-            ans.add(pq.poll());
+        for(int i=start; i<end + k; i++){
+            ans.add(arr[i]);
         }
-        Collections.sort(ans);
         return ans;
     }
 }
