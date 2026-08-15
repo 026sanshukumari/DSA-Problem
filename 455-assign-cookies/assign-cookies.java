@@ -14,6 +14,6 @@ class Solution {
                 j++;
             }
         }
-        return count++; 
+        return count; 
     }
 }
