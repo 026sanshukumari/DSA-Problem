@@ -1,9 +1,9 @@
 class Solution {
     public List<Integer> partitionLabels(String s) {
-        List<Integer> ans = new ArrayList<>();
         int[] last = new int[26];
-        int start = 0;
+        List<Integer> ans = new ArrayList<>();
         int end = 0;
+        int start = 0;
         for(int i=0; i<s.length(); i++){
             last[s.charAt(i) - 'a'] = i;
         }
