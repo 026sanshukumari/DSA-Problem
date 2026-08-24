@@ -1,36 +1,50 @@
 class Solution {
     public int minDays(int[] bloomDay, int m, int k) {
-        if((long) m * k > bloomDay.length){
+
+        if ((long) m * k > bloomDay.length) {
             return -1;
         }
-        int low = Integer.MAX_VALUE;
-        int high = Integer.MIN_VALUE;
 
-        for(int day : bloomDay){
-            low = Math.min(low, day);
-            high = Math.max(high, day);
+        int left = bloomDay[0];
+        int right = bloomDay[0];
+
+        for (int day : bloomDay) {
+            left = Math.min(left, day);
+            right = Math.max(right, day);
         }
-        while(low <= high){
-            int mid = low + (high - low)/2;
+
+        int answer = -1;
+
+        while (left <= right) {
+
+            int mid = left + (right - left) / 2;
+
+            int flower = 0;
             int bouquet = 0;
-            int consective = 0;
-            for(int day : bloomDay){
-                if(day <= mid){
-                    consective++;
-                }else{
-                    consective = 0;
-                }
-                if(consective == k){
-                    bouquet++;
-                    consective = 0;
+
+            for (int i = 0; i < bloomDay.length; i++) {
+
+                if (bloomDay[i] <= mid) {
+                    flower++;
+
+                    if (flower == k) {
+                        bouquet++;
+                        flower = 0;
+                    }
+
+                } else {
+                    flower = 0;
                 }
             }
-                if(bouquet >= m){
-                    high = mid - 1;
-                }else{
-                    low = mid + 1;
+
+            if (bouquet >= m) {
+                answer = mid;
+                right = mid - 1;
+            } else {
+                left = mid + 1;
             }
         }
-        return low;
+
+        return answer;
     }
 }
