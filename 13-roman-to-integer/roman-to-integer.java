@@ -1,22 +1,37 @@
 class Solution {
     public int romanToInt(String s) {
-        HashMap<Character,Integer> map = new HashMap<>();
-        map.put('I',1);
-        map.put('V',5);
-        map.put('X',10);
-        map.put('L',50);
-        map.put('C',100);
-        map.put('D',500);
-        map.put('M',1000);
-        int result = 0;
-        for(int i=0; i<s.length(); i++){
-            int value = map.get(s.charAt(i));
-            if(i < s.length() - 1 && value < map.get(s.charAt(i+1))){
-                result -= value;
+       char rn; 
+       int sum = 0;
+       for(int i=0; i<s.length(); i++){
+        rn = s.charAt(i);
+        if(rn == 'I'){
+            if(i + 1 < s.length() && (s.charAt(i+1) == 'V' || s.charAt(i+1) == 'X')){
+                sum -= 1;
             }else{
-                result += value;
+            sum += 1;
             }
-        }
-            return result;
+         }else if(rn == 'V'){
+            sum += 5;
+         }else if(rn == 'X'){
+            if(i + 1 < s.length() && (s.charAt(i + 1) == 'L' || s.charAt(i+1) == 'C')){
+                sum -= 10;
+            }else{
+            sum += 10;
+            }
+         }else if(rn == 'L'){
+            sum += 50;
+         }else if(rn == 'C'){
+            if(i+1 < s.length() && (s.charAt(i+1) == 'D' || s.charAt(i+1) == 'M')){
+                sum -= 100;
+            }else{
+            sum += 100;
+            }
+         }else if(rn == 'D'){
+            sum += 500;
+         }else if(rn == 'M'){
+            sum += 1000;
+         }
+       }
+       return sum;
     }
 }
