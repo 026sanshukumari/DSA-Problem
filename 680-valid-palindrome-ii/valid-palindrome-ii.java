@@ -1,26 +1,24 @@
 class Solution {
-    private boolean helper(int left, int right, String s){
-        while(left < right){
-            if(s.charAt(left) != s.charAt(right)){
-                return false;
+    public boolean validPalindrome(String s) {
+        int i = 0;
+        int j = s.length() - 1;
+        while(i < j){
+            if(s.charAt(i) == s.charAt(j)){
+                i++;
+                j--;
+            }else{
+                return check(s, i+1, j) || check(s, i, j-1);
             }
-            left++;
-            right--;
         }
         return true;
     }
-    public boolean validPalindrome(String s) {
-        int i = 0, j = s.length() - 1;
+    public boolean check(String s, int i, int j){
         while(i < j){
-            char left = s.charAt(i);
-            char right = s.charAt(j);
-            if(left != right){
-               return helper(i+1, j, s) || helper(i, j-1,s);
+            if(s.charAt(i) != s.charAt(j)){
+                return false;
             }
-            else{
-                i++;
-                j--;
-            }
+            i++;
+            j--;
         }
         return true;
     }
