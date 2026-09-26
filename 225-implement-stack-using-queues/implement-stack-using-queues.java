@@ -1,7 +1,6 @@
 class MyStack {
     Queue<Integer> q1;
     Queue<Integer> q2;
-
     public MyStack() {
         q1 = new LinkedList<>();
         q2 = new LinkedList<>();
@@ -15,16 +14,14 @@ class MyStack {
         Queue<Integer> temp = q1;
         q1 = q2;
         q2 = temp;
-        
     }
     
     public int pop() {
-       return q1.poll();
-        
+        return q1.poll();
     }
     
     public int top() {
-       return q1.peek();
+        return q1.peek();
     }
     
     public boolean empty() {
