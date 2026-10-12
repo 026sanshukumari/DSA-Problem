@@ -7,14 +7,14 @@ class Solution {
             sum += nums[i];
             int rem = sum % k;
             if(map.containsKey(rem)){
-                int prevIdx = map.get(rem);
-                if(i - prevIdx >= 2){
+                if(i - map.get(rem) >= 2){
                 return true;
             }
             }else{
-                map.put(rem, i);
-            }
+            map.put(rem,i);
+        }
         }
         return false;
+
     }
 }
