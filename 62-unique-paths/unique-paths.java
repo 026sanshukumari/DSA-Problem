@@ -1,23 +1,23 @@
 class Solution {
     public int uniquePaths(int m, int n) {
         int[][] dp = new int[m][n];
-        return helper(0, 0,m, n, dp);
-    }
-    private int helper(int i, int j, int m, int n, int[][] dp){
-        if(i >= m || j >= n){
-            return 0;
+        for(int i=0; i<m; i++){
+            for(int j=0; j<n; j++){
+                if(i == 0 && j==0){
+                    dp[0][0] = 1;
+                }else{
+                    int up = 0;
+                    int left = 0;
+                    if(i > 0){
+                        up = dp[i-1][j];
+                    }
+                    if(j > 0){
+                        left = dp[i][j-1];
+                    }
+                    dp[i][j] = up + left;
+                }
+            }
         }
-
-        if(i == m - 1 && j == n - 1){
-            return 1;
-        }
-        if(dp[i][j] != 0){
-            return dp[i][j];
-        }
-
-        int down = helper(i+1, j, m, n, dp);
-        int right = helper(i, j+1, m, n, dp);
-        dp[i][j] = down + right;
-        return dp[i][j];
+        return dp[m-1][n-1];
     }
 }
