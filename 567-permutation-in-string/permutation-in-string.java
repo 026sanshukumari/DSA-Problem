@@ -1,23 +1,24 @@
 class Solution {
     public boolean checkInclusion(String s1, String s2) {
-       int[] freq = new int[26];
-       int[] window = new int[26];
-
-       for(int i=0; i<s1.length(); i++){
-        freq[s1.charAt(i) - 'a']++;
-       }
-       int left = 0;
-       for(int right=0; right<s2.length(); right++){
-        window[s2.charAt(right) - 'a']++;
-        if(right - left + 1 == s1.length()){
-            if(Arrays.equals(freq,window)){
+        if(s1.length() > s2.length()) return false;
+        int[] freq = new int[26];
+        int[] winFreq = new int[26];
+        for(int i=0; i<s1.length(); i++){
+            freq[s1.charAt(i) - 'a']++;
+        }
+        for(int i=0; i<s1.length(); i++){
+            winFreq[s2.charAt(i) - 'a']++;
+            if(Arrays.equals(freq, winFreq)){
                 return true;
             }
-            window[s2.charAt(left) - 'a']--;
-            left++;
         }
-       }
-       return false;
-
+            for(int i =s1.length(); i<s2.length(); i++){
+                winFreq[s2.charAt(i - s1.length()) - 'a']--;
+                winFreq[s2.charAt(i) - 'a']++;
+                if(Arrays.equals(freq, winFreq)){
+                    return true;
+                }
+            }
+        return false;
     }
 }
