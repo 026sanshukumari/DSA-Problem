@@ -10,11 +10,11 @@ class Solution {
                 if(i - map.get(rem) >= 2){
                 return true;
             }
-            }else{
-            map.put(rem,i);
-        }
+            }
+            if(!map.containsKey(rem)){
+                map.put(rem, i);
+            }
         }
         return false;
-
     }
 }
